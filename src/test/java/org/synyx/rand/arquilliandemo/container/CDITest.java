@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.synyx.rand.arquilliandemo.view;
+package org.synyx.rand.arquilliandemo.container;
 
 import javax.inject.Inject;
 
