@@ -1,6 +1,7 @@
 
 package org.synyx.rand.arquilliandronedemo.domain;
 
+import com.apple.java.Usage;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -31,11 +32,14 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id"),
     @NamedQuery(name = "User.findByName", query = "SELECT u FROM User u WHERE u.name = :name"),
     @NamedQuery(name = "User.findBySurname", query = "SELECT u FROM User u WHERE u.surname = :surname"),
-    @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
+    @NamedQuery(name = User.FIND_BY_EMAIL, query = "SELECT u FROM User u WHERE u.email = :email"),
     @NamedQuery(name = "User.findByCreationDate", query = "SELECT u FROM User u WHERE u.creationDate = :creationDate"),
     @NamedQuery(name = "User.findByLastLoginDate", query = "SELECT u FROM User u WHERE u.lastLoginDate = :lastLoginDate")})
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
+    
+    public static final String FIND_BY_EMAIL = "User.findByEmail";
+    
     @Id
     @Basic(optional = false)
     @GeneratedValue(strategy = GenerationType.AUTO)

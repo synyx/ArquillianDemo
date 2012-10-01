@@ -4,6 +4,7 @@ package org.synyx.rand.arquilliandronedemo.dao;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import org.synyx.rand.arquilliandronedemo.domain.User;
 
 /**
@@ -18,6 +19,19 @@ public class UserFacade extends AbstractFacade<User> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    
+    /**
+     * Finder via User email.
+     * 
+     * @param email
+     * @return User
+     */
+    public User findByEmail(String email) {
+        Query finderQuery = em.createNamedQuery(User.FIND_BY_EMAIL);
+        finderQuery.setParameter("email", email);
+        User user = (User) finderQuery.getSingleResult();
+        return user;
     }
 
     public UserFacade() {
